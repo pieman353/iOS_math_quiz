@@ -19,12 +19,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textField2.tag = 2
         textField3.tag = 3
         numCorrectLabel.isHidden = true
+        
         //labels = [label1, label2, label3]
     }
     
     @IBOutlet weak var textField1: UITextField!
     @IBOutlet weak var textField2: UITextField!
     @IBOutlet weak var textField3: UITextField!
+    
+    weak var delegate:UITextFieldDelegate?
     
     @IBOutlet weak var label1: UILabel!
     @IBOutlet weak var label2: UILabel!
@@ -106,9 +109,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string:String) -> Bool {
+        print("HERE!!")
         let index = textField.tag
         print(index)
-        if textField.text == "" && string == "0" {
+        if textField.text == "?" && string == "0" {
             return false
         }
         return true
